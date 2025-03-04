@@ -48,6 +48,17 @@ class CustomerPageConfig extends SprykerCustomerPageConfig
     protected const PASSWORD_VALIDATION_MESSAGE = 'global.password.invalid_password';
 
     /**
+     * @var array<int, string>
+     */
+    protected const ORDER_SEARCH_TYPES = [
+        'all',
+        'orderName',
+        'orderReference',
+        'itemName',
+        'itemSku',
+    ];
+
+    /**
      * {@inheritDoc}
      *
      * @return bool

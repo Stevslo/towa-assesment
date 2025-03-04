@@ -4139,3 +4139,7 @@ payment_app_widget.error.incorrect_quote,"Quote not found, session may have expi
 payment_app_widget.error.incorrect_quote,"Angebot nicht gefunden, Sitzung ist möglicherweise abgelaufen",de_DE
 customer.change_customer_email_mail_sent,"Almost there! We send you an email to validate your email address. Please confirm it to be able to log in.",en_US
 customer.change_customer_email_mail_sent,"Fast dort! Wir senden Ihnen eine E-Mail, um Ihre E-Mail-Adresse zu bestätigen. Bitte bestätigen Sie dies, um sich anmelden zu können.",de_DE
+checkout.step.orderName.title,"Bestelldetails",de_DE
+checkout.step.orderName.title,"Order details",en_US
+checkout.step.orderName.label,"Name der Bestellung",de_DE
+checkout.step.orderName.label,"Name of the order",en_US

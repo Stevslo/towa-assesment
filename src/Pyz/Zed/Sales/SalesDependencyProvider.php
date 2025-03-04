@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Zed\Sales;
 
+use Pyz\Zed\Sales\Business\Expander\OrderNamePreSaveExpanderPlugin;
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadAttachedCommentOrderPostSavePlugin;
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadOrderExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CompanyBusinessUnitCustomerFilterOrderSearchQueryExpanderPlugin;
@@ -76,6 +77,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     protected function getOrderExpanderPreSavePlugins(): array
     {
         return [
+            new OrderNamePreSaveExpanderPlugin(),
             new OmsMultiThreadProcessorIdentifierOrderExpanderPreSavePlugin(),
         ];
     }

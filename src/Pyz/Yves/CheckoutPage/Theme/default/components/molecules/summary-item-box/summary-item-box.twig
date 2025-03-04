@@ -7,6 +7,7 @@
 {% define data = {
     title: required,
     method: '',
+    orderName: '',
     address: {},
     iconName: '',
     editUrl: '',
@@ -29,6 +30,12 @@
             </a>
         {% endif %}
     </h4>
+
+    {% if data.orderName %}
+        <span class="{{ config.name }}__method">
+            {{ 'checkout.step.orderName.label' | trans }}: {{ data.orderName }}
+        </span>
+    {% endif %}
 
     {% if data.method %}
         <span class="{{ config.name }}__method">

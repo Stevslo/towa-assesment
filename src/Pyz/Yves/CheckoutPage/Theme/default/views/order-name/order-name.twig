@@ -1,0 +1,38 @@
+{% extends template('page-layout-checkout', 'CheckoutPage') %}
+
+{% define data = {
+    forms: {
+        orderName: _view.orderNameForm,
+    },
+
+    backUrl: _view.previousStepUrl,
+    requestUri: app.request.requestUri,
+    title: 'checkout.step.orderName.title' | trans,
+} %}
+
+{% block content %}
+    {% embed molecule('form') with {
+        class: 'box',
+        data: {
+            form: data.forms.orderName,
+            submit: {
+                enable: true,
+                text: 'forms.save-btn' | trans,
+            },
+            cancel: {
+                enable: true,
+                url: data.backUrl,
+                text: 'general.back.button' | trans,
+            },
+        },
+        embed: {},
+    } only %}
+        {% block field %}{{ parent() }}{% endblock %}
+
+        {% block submit %}{{ parent() }}{% endblock %}
+
+        {% block body %}
+            {{ parent() }}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

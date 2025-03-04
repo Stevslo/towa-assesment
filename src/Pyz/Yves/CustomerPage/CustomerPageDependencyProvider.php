@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace Pyz\Yves\CustomerPage;
 
+use Pyz\Yves\CustomerPage\Plugin\OrderNameOrderSearchFormHandlerPlugin;
 use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin;
 use SprykerShop\Yves\AgentPage\Plugin\Security\UpdateAgentTokenAfterCustomerAuthenticationSuccessPlugin;
@@ -136,6 +137,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     protected function getOrderSearchFormHandlerPlugins(): array
     {
         return [
+            new OrderNameOrderSearchFormHandlerPlugin(),
             new CompanyBusinessUnitOrderSearchFormHandlerPlugin(),
         ];
     }
