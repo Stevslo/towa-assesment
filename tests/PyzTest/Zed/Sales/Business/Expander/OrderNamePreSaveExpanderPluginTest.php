@@ -44,10 +44,11 @@ class OrderNamePreSaveExpanderPluginTest extends Unit
 
     /**
      * @dataProvider provideExpandData
+     *
+     * @param string|null $orderName
      */
-    public function testExpand(
-        ?string $orderName
-    ): void {
+    public function testExpand(?string $orderName): void
+    {
         $expander = new OrderNamePreSaveExpanderPlugin();
 
         $quoteTransfer = (new QuoteTransfer())->fromArray([
@@ -58,5 +59,4 @@ class OrderNamePreSaveExpanderPluginTest extends Unit
 
         $this->assertSame($orderName, $result->getOrderName());
     }
-
 }

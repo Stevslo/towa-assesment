@@ -28,7 +28,6 @@ class FormFactory extends SprykerFormFactory
         return $this->createFormCollection($this->getOrderNameFormTypes(), $this->getOrderNameFormDataProviderPlugin());
     }
 
-
     /**
      * @return array<string>
      */

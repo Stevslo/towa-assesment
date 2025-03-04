@@ -73,7 +73,7 @@ class OrderNameStepTest extends Unit
     {
         return new OrderNameStep(
             'shipment',
-            'escape_route'
+            'escape_route',
         );
     }
 }
