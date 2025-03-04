@@ -1,0 +1,41 @@
+@import 'flatpickr/dist/flatpickr.min.css';
+
+@mixin shop-ui-date-time-picker($name: '.date-time-picker') {
+    #{$name} {
+        &__content {
+            position: relative;
+        }
+
+        &__field {
+            padding-right: rem(40);
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &__icon {
+            fill: $setting-color-gray-2;
+            width: rem(20);
+            height: rem(20);
+            position: absolute;
+            bottom: rem(14);
+            right: rem(12);
+        }
+
+        &--with-icon {
+            .input {
+                padding-right: rem(40);
+            }
+        }
+
+        &__datepicker {
+            @include helper-accessible-visibility-invisible;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-date-time-picker();
