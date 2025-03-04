@@ -1,4 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
+declare(strict_types = 1);
 
 namespace Pyz\Yves\CheckoutPage\Controller;
 
@@ -11,6 +18,11 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CheckoutController extends SprykerCheckoutController
 {
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Spryker\Yves\Kernel\View\View|\Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function orderNameAction(Request $request)
     {
         $quoteValidationResponseTransfer = $this->canProceedCheckout();

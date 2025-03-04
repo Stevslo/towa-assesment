@@ -1,4 +1,11 @@
-<?php declare(strict_types = 1);
+<?php
+
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
+declare(strict_types = 1);
 
 namespace Pyz\Yves\CheckoutPage\Form\Steps;
 
@@ -31,7 +38,7 @@ class OrderNameForm extends AbstractType
     /**
      * @return string
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'orderNameForm';
     }
@@ -59,7 +66,7 @@ class OrderNameForm extends AbstractType
             'constraints' => [
                 new NotBlank(),
                 new Regex('/^[a-z0-9]+$/'),
-            ]
+            ],
         ]);
 
         return $this;

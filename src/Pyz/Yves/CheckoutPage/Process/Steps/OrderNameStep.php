@@ -1,9 +1,15 @@
-<?php declare(strict_types = 1);
+<?php
+
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
+declare(strict_types = 1);
 
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
 
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
-use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
 use Spryker\Yves\StepEngine\Dependency\Step\StepWithBreadcrumbInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AbstractBaseStep;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,15 +17,11 @@ use Symfony\Component\HttpFoundation\Request;
 class OrderNameStep extends AbstractBaseStep implements StepWithBreadcrumbInterface
 {
     /**
-     * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface $customerStepHandler
      * @param string $stepRoute
      * @param string|null $escapeRoute
      */
-    public function __construct(
-        private readonly StepHandlerPluginInterface $orderNameStepHandlerPlugin,
-        $stepRoute,
-        $escapeRoute
-    ) {
+    public function __construct(string $stepRoute, ?string $escapeRoute)
+    {
         parent::__construct($stepRoute, $escapeRoute);
     }
 
@@ -28,22 +30,20 @@ class OrderNameStep extends AbstractBaseStep implements StepWithBreadcrumbInterf
      *
      * @return bool
      */
-    public function requireInput(AbstractTransfer $quoteTransfer)
+    public function requireInput(AbstractTransfer $quoteTransfer): bool
     {
         return true;
     }
 
     /**
-     * Update QuoteTransfer with order name step handler plugin.
-     *
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function execute(Request $request, AbstractTransfer $quoteTransfer)
+    public function execute(Request $request, AbstractTransfer $quoteTransfer): AbstractTransfer
     {
-        return $this->orderNameStepHandlerPlugin->addToDataClass($request, $quoteTransfer);
+        return $quoteTransfer;
     }
 
     /**
@@ -51,15 +51,15 @@ class OrderNameStep extends AbstractBaseStep implements StepWithBreadcrumbInterf
      *
      * @return bool
      */
-    public function postCondition(AbstractTransfer $quoteTransfer)
+    public function postCondition(AbstractTransfer $quoteTransfer): bool
     {
-        return false;
+        return !empty($quoteTransfer->getOrderName());
     }
 
     /**
      * @return string
      */
-    public function getBreadcrumbItemTitle()
+    public function getBreadcrumbItemTitle(): string
     {
         return 'checkout.step.orderName.title';
     }
@@ -69,7 +69,7 @@ class OrderNameStep extends AbstractBaseStep implements StepWithBreadcrumbInterf
      *
      * @return bool
      */
-    public function isBreadcrumbItemEnabled(AbstractTransfer $quoteTransfer)
+    public function isBreadcrumbItemEnabled(AbstractTransfer $quoteTransfer): bool
     {
         return $this->postCondition($quoteTransfer);
     }
@@ -79,7 +79,7 @@ class OrderNameStep extends AbstractBaseStep implements StepWithBreadcrumbInterf
      *
      * @return bool
      */
-    public function isBreadcrumbItemHidden(AbstractTransfer $quoteTransfer)
+    public function isBreadcrumbItemHidden(AbstractTransfer $quoteTransfer): bool
     {
         return false;
     }

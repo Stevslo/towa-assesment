@@ -1,9 +1,18 @@
-<?php declare(strict_types = 1);
+<?php
+
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
+declare(strict_types = 1);
 
 namespace Pyz\Yves\CheckoutPage\Form;
 
 use Pyz\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use Pyz\Yves\CheckoutPage\Form\Steps\OrderNameForm;
+use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
+use Spryker\Yves\StepEngine\Form\FormCollectionHandlerInterface;
 use SprykerShop\Yves\CheckoutPage\Form\FormFactory as SprykerFormFactory;
 
 /**
@@ -14,7 +23,7 @@ class FormFactory extends SprykerFormFactory
     /**
      * @return \Spryker\Yves\StepEngine\Form\FormCollectionHandlerInterface
      */
-    public function createOrderNameFormCollection()
+    public function createOrderNameFormCollection(): FormCollectionHandlerInterface
     {
         return $this->createFormCollection($this->getOrderNameFormTypes(), $this->getOrderNameFormDataProviderPlugin());
     }
@@ -23,7 +32,7 @@ class FormFactory extends SprykerFormFactory
     /**
      * @return array<string>
      */
-    public function getOrderNameFormTypes()
+    public function getOrderNameFormTypes(): array
     {
         return [
             $this->getOrderNameForm(),
@@ -41,7 +50,7 @@ class FormFactory extends SprykerFormFactory
     /**
      * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
      */
-    public function getOrderNameFormDataProviderPlugin()
+    public function getOrderNameFormDataProviderPlugin(): StepEngineFormDataProviderInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::PLUGIN_ORDER_NAME_FORM_DATA_PROVIDER);
     }
